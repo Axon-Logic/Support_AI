@@ -1,0 +1,57 @@
+<ion-app>
+  <ion-menu contentId="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <!-- <ion-title>Menu Content</ion-title> -->
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">This is the menu content.</ion-content>
+  </ion-menu>
+  <ion-content class="d-flex ion-justify-content-between content">
+    <ion-content *ngIf="dataShare.showSideMenu" class="w-30 menubar">
+      <ion-header class="header" [translucent]="true">
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+          <ion-title>Support</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-list class="" id="inbox-list">
+        <ion-item
+          *ngFor="let index of simpleService.chatsValues"
+          (click)="openChat(simpleService.chats[index])"
+        >
+          <div class="d-flex">
+            <ion-avatar class="avatar">
+              <img
+                alt="Silhouette of a person's head"
+                src="https://ionicframework.com/docs/img/demos/avatar.svg"
+              />
+            </ion-avatar>
+            <div
+              class="d-flex flex-column ion-justify-content-center ps-3 py-1"
+            >
+              <p class="ion-no-margin ion-no-padding">
+                {{ simpleService.chats[index].user_name }}
+              </p>
+              <small class="ion-no-margin ion-no-padding text-desc">{{
+                simpleService.chats[index].message
+              }}</small>
+            </div>
+          </div>
+          <ion-badge
+            *ngIf="simpleService.chats[index].message_count"
+            slot="end"
+            >{{ simpleService.chats[index].message_count }}</ion-badge
+          >
+        </ion-item>
+      </ion-list>
+    </ion-content>
+
+    <ion-router-outlet
+      id="main-content"
+      [ngClass]="{ 'w-70 ms-auto': dataShare.showSideMenu }"
+    ></ion-router-outlet>
+  </ion-content>
+</ion-app>

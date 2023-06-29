@@ -1,0 +1,68 @@
+<ion-header
+  *ngIf="!dataShare.showSideMenu "
+  class="header"
+  [translucent]="true"
+>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Support</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="body" [fullscreen]="true">
+  <div
+    class="landing d-flex flex-column justify-content-center align-items-center h-100"
+  >
+    <div class="lds-spinner" *ngIf="!this.simpleService.chats?.length">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <ion-list
+      class=""
+      id="inbox-list"
+      *ngIf="!dataShare.showSideMenu "
+      class="mb-auto chats__list-landing w-100 bg-transparent"
+      id="inbox-list"
+    >
+      <ion-item
+        *ngFor="let index of simpleService.chatsValues"
+        (click)="openChat(simpleService.chats[index])"
+      >
+        <div class="d-flex align-items-center">
+          <ion-avatar class="avatar">
+            <img
+              alt="Silhouette of a person's head"
+              src="https://ionicframework.com/docs/img/demos/avatar.svg"
+            />
+          </ion-avatar>
+          <div class="d-flex flex-column ion-justify-content-center ps-3 py-1">
+            <p class="ion-no-margin ion-no-padding">
+              {{ simpleService.chats[index].user_name }}
+            </p>
+            <small class="ion-no-margin ion-no-padding text-desc"
+              >{{ simpleService.chats[index].message }}</small
+            >
+          </div>
+        </div>
+        <ion-badge *ngIf="simpleService.chats[index].message_count" slot="end"
+          >{{ simpleService.chats[index].message_count }}</ion-badge
+        >
+      </ion-item>
+    </ion-list>
+    <div class="choose" *ngIf="dataShare.showSideMenu">
+      Choose chat to start messaging
+    </div>
+  </div>
+</ion-content>

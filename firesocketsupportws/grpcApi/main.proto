@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package grpcApi;
+option go_package = "./grpcApi";
+
+message ClientMessage {
+    string Sender = 1;
+    string UserName = 2;
+	string Message = 3;
+    string Caption = 4;
+    string MessageType = 5;
+    string MessageId = 6;
+    string ClientName = 7;
+    bool IsSupport = 8;
+}
+
+message ServerMessage {
+    string Sender = 1;
+    string UserName = 2;
+	string Message = 3;
+    string Caption = 4;
+    string MessageType = 5;
+    string ReplyMessageId = 6;
+    string MessageId = 7;
+	string Action = 8;
+	float Score = 9;
+    string Dep = 10;
+	string Arr = 11;
+	string Date = 12;
+	string Language = 13;
+    string ClientName = 14;
+    string Intent = 15;
+    string DepCode= 16;
+    string ArrCode= 17;
+    float MessageDate = 18;
+    int32 MessageCount = 19;
+    bool IsClient = 20;
+}
+
+message Provider {
+    string HostName = 1;
+	string GrpcPort = 2;
+    string GinPort = 3;
+}
+
+message MessageStreamRequest{
+    string ClientFilter = 1;
+}
+
+message Empty {}
+
+service Main {
+    rpc GetMessageStream (MessageStreamRequest) returns (stream ServerMessage) {}
+    rpc PostMessageFromClient (ClientMessage) returns (Empty) {}
+
+    rpc GetMasterProvider (Empty) returns (Provider) {}
+}

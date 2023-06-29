@@ -1,0 +1,43 @@
+.chats {
+  height: 85vh;
+  overflow: hidden;
+
+  &__list {
+    overflow-y: scroll;
+    height: 100% !important;
+    padding-bottom: 4vh !important;
+  }
+}
+
+.content {
+  position: relative;
+}
+
+.text-desc {
+  opacity: 0.3;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.w-30 {
+  width: 30%;
+}
+.w-70 {
+  width: 70%;
+}
+
+.item {
+  background-color: aqua;
+  margin-bottom: 10px;
+  height: 50px;
+}
+
+.content {
+  overflow: hidden;
+}
+
+.menubar {
+  border-right: 1px solid rgb(232, 232, 232);
+  // margin-left: -10px;
+}

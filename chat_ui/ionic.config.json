@@ -1,0 +1,7 @@
+{
+  "name": "Railway support",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

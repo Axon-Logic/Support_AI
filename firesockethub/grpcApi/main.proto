@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package grpcApi;
+option go_package = "./grpcApi";
+
+message Provider {
+    string HostName = 1;
+	string GrpcPort = 2;
+}
+
+message Empty {}
+
+service Main {
+    rpc RegisterProvider (stream Provider) returns (stream Empty) {}
+    rpc GetMasterProvider (Empty) returns (Provider) {}
+}

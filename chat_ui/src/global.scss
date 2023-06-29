@@ -1,0 +1,143 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css");
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/assets/fonts/inter/Inter-Black.ttf") format("ttf");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 650;
+  font-display: swap;
+  src: url("/assets/fonts/inter/Inter-ExtraBold.ttf") format("ttf");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/assets/fonts/inter/Inter-Bold.ttf") format("ttf");
+}
+@font-face {
+  font-family: "SF Pro Text";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/assets/fonts/font/SF-Pro-Text-Bold.woff") format("woff");
+}
+@font-face {
+  font-family: "SF Pro Text";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/assets/fonts/font/SF-Pro-Text-Semibold.woff") format("woff");
+}
+@font-face {
+  font-family: "SF Pro Text";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/assets/fonts/font/SF-Pro-Text-Medium.woff") format("woff");
+}
+@font-face {
+  font-family: "SF Pro Text";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/font/SF-Pro-Text-Regular.woff") format("woff");
+}
+@font-face {
+  font-family: "SF Pro Text";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("/assets/fonts/font/SF-Pro-Text-Light.woff") format("woff");
+}
+@font-face {
+  font-family: "SF Pro Text";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/font/SF-Pro-Text-Regular.woff") format("woff");
+}
+
+.vertical-align {
+  display: flex !important;
+  align-content: center !important;
+  align-items: center !important;
+}
+
+.button-login {
+  font-family: "SF Pro Text";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  height: 48px;
+  width: 100%;
+  max-width: 350px;
+  margin-top: auto;
+  background: var(--button-background);
+  --background: var(--button-background);
+  color: var(--button-text);
+  --color: var(--button-text);
+  border-radius: 26px;
+  --border-radius: 26px;
+}
+
+.input {
+  background: var(--white-smoke);
+  border-radius: 8px;
+  padding: 0 16px !important;
+}
+
+.header {
+  --background: var(--white);
+  box-shadow: none;
+  border-bottom: 1px solid rgb(232, 232, 232);
+}
+
+.body {
+  --background: var(--bg-gradient) !important;
+}
+
+.footer {
+  --background: var(--white);
+}
+
+ion-back-button {
+  --background: transparent !important;
+  --padding: 0;
+}
+
+.avatar {
+  width: 35px;
+  height: 35px;
+}

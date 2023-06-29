@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="body" [fullscreen]="true">
+  <form
+    class="p-3 d-flex flex-column justify-content-between h-100"
+    [formGroup]="loginForm"
+  >
+    <div class="inputs">
+      <ion-input
+        class="input mb-3"
+        label="Login"
+        labelPlacement="floating"
+
+        placeholder="Enter login"
+        formControlName="username"
+      ></ion-input>
+      <ion-input
+        class="input"
+        label="Password"
+        labelPlacement="floating"
+        placeholder="Enter password"
+        type="password"
+        formControlName="password"
+      ></ion-input>
+    </div>
+    <div class="buttons d-flex justify-content-center w-100">
+      <button (click)="login()" class="button button--login ion-no-padding">
+        <ion-ripple-effect></ion-ripple-effect>
+        <span>Login</span>
+      </button>
+    </div>
+  </form>
+</ion-content>

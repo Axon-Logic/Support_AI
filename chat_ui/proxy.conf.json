@@ -1,0 +1,20 @@
+{
+   "/history": {
+      "target": "https://chat.nurislom.space",
+      "changeOrigin": true,
+      "logLevel": "debug",
+      "secure": true
+   },
+   "/firesocketsupportapi": {
+      "target": "https://chat.nurislom.space",
+      "changeOrigin": true,
+      "logLevel": "debug",
+      "secure": true
+   },
+   "/auth": {
+      "target": "https://chat.nurislom.space",
+      "changeOrigin": true,
+      "logLevel": "debug",
+      "secure": true
+   }
+}

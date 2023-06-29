@@ -1,0 +1,112 @@
+version: '3'
+
+networks:
+  firesocketnet:
+    driver: bridge
+
+services:
+  web_app:
+    build: chat_ui/.
+    ports:
+      - "0.0.0.0:96:80"
+    restart: always
+
+  db:
+    image: postgres:15.2
+    container_name: db
+    networks:
+      - firesocketnet
+    volumes:
+      - .:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5436:5432"
+    env_file: db.env
+    restart: always  
+
+  auth_api:
+    build: auth_api/.
+    container_name: auth_api
+    depends_on:
+      - db
+    networks:
+      - firesocketnet
+    ports:
+      - "127.0.0.1:5677:5677"
+    env_file: auth.env
+    restart: always
+
+  history_api:
+    build: history_api/.
+    container_name: history_api
+    ports:
+      - "127.0.0.1:5675:5679"
+    depends_on:
+      - db
+    networks:
+      - firesocketnet
+    volumes:
+      - ./history_api/:/history_api/
+    env_file: history.env
+    restart: always
+
+  firesockethub:
+    build: firesockethub/.
+    container_name: firesockethub
+    ports:
+      - "127.0.0.1:50050:50050"
+      - "127.0.0.1:50055:50055"
+    networks:
+      - firesocketnet
+    env_file: hub.env
+    restart: always
+
+  firesocketprovider:
+    build: firesocketprovider/.
+    ports:
+      - "127.0.0.1:7776:7776"
+      - "127.0.0.1:7777:7777"
+    container_name: firesocketprovider
+    depends_on:
+      - firesockethub
+    networks:
+      - firesocketnet
+    env_file: provider.env
+    restart: always
+
+  firesocketcommunicator:
+    build: firesocketcommunicator/.
+    container_name: firesocketcommunicator
+    depends_on:
+      - firesockethub
+      - rasa_api
+      - history_api
+    networks:
+      - firesocketnet
+    env_file: communicator.env
+    restart: always
+
+  firesocketclient:
+    build: firesocketclient/.
+    container_name: firesocketclient
+    ports:
+      - "127.0.0.1:7773:7773"
+    depends_on:
+      - firesockethub
+    networks:
+      - firesocketnet
+    env_file: client.env
+    restart: always
+
+  firesocketsupportws:
+    build: firesocketsupportws/.
+    container_name: firesocketsupportws
+    ports:
+      - "127.0.0.1:1233:1233"
+      - "127.0.0.1:1232:1232"
+    depends_on:
+      - firesockethub
+      - history_api
+    networks:
+      - firesocketnet
+    env_file: support.env
+    restart: always

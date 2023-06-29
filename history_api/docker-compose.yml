@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  websocket:
+    build: .
+    ports:
+      - "5679:5679"
+    restart: always
+
+    environment:
+      - WEBSOCKET_CHAT=${WEBSOCKET_CHAT}
+      - WEBSOCKET_MESSAGE=${WEBSOCKET_MESSAGE}
+      - BOT_TOKEN=${BOT_TOKEN}
+      - POSTGRES=${POSTGRES}
